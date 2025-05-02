@@ -1,0 +1,19 @@
+{
+  "name": "validation-service",
+  "version": "0.1.0",
+  "description": "Ensures the integrity and correctness of component specifications in the Specky repository by validating structure and content against defined schemas, checking for compliance with standards, and providing detailed validation reports.",
+  "dependencies": {
+    "component-storage": "^0.1.0",
+    "user-management": "^0.1.0",
+    "dependency-management": "^0.1.0"
+  },
+  "keywords": [
+    "validation",
+    "schema",
+    "integrity",
+    "component",
+    "specification",
+    "reporting",
+    "quality assurance"
+  ]
+}

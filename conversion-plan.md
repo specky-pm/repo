@@ -23,7 +23,7 @@ We need to convert 6 component specifications from the `doc/component-markdown` 
 - [x] Search and Discovery
 - [x] Dependency Management
 - [x] Authentication and Authorization
-- [ ] Validation Service
+- [x] Validation Service
 
 ## Conversion Process for Each Component
 
@@ -74,12 +74,12 @@ We need to convert 6 component specifications from the `doc/component-markdown` 
 
 ### 6. Validation Service
 
-- [ ] Create directory structure
-- [ ] Create spec.json with metadata
-- [ ] Convert markdown to component.md format
-- [ ] Extract entity definitions to create datamodel.json
-- [ ] Convert use cases to Gherkin feature files
-- [ ] Validate using specky-lint
+- [x] Create directory structure
+- [x] Create spec.json with metadata
+- [x] Convert markdown to component.md format
+- [x] Extract entity definitions to create datamodel.json
+- [x] Convert use cases to Gherkin feature files
+- [x] Validate using specky-lint
 
 ## Detailed Steps for Each Component
 

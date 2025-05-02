@@ -1,0 +1,410 @@
+{
+  "entities": [
+    {
+      "name": "ValidationSchema",
+      "attributes": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "Unique identifier for the validation schema",
+          "required": true,
+          "unique": true
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "description": "Name of the validation schema",
+          "required": true,
+          "validation": {
+            "minLength": 3,
+            "maxLength": 100
+          }
+        },
+        {
+          "name": "fileType",
+          "type": "string",
+          "description": "Type of file this schema validates (e.g., spec.json, component.md, datamodel.json, feature)",
+          "required": true,
+          "validation": {
+            "pattern": "^(spec\\.json|component\\.md|datamodel\\.json|feature)$"
+          }
+        },
+        {
+          "name": "schemaVersion",
+          "type": "string",
+          "description": "Version of the schema",
+          "required": true,
+          "validation": {
+            "pattern": "^\\d+\\.\\d+\\.\\d+$"
+          }
+        },
+        {
+          "name": "schemaDefinition",
+          "type": "object",
+          "description": "The actual schema definition used for validation",
+          "required": true
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "description": "Description of what this schema validates",
+          "required": true
+        },
+        {
+          "name": "createdAt",
+          "type": "datetime",
+          "description": "When this schema was created",
+          "required": true
+        },
+        {
+          "name": "updatedAt",
+          "type": "datetime",
+          "description": "When this schema was last updated",
+          "required": true
+        }
+      ],
+      "relationships": [
+        {
+          "name": "rules",
+          "type": "one-to-many",
+          "target": "ValidationRule"
+        }
+      ]
+    },
+    {
+      "name": "ValidationRule",
+      "attributes": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "Unique identifier for the validation rule",
+          "required": true,
+          "unique": true
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "description": "Name of the validation rule",
+          "required": true,
+          "validation": {
+            "minLength": 3,
+            "maxLength": 100
+          }
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "description": "Description of what this rule validates",
+          "required": true
+        },
+        {
+          "name": "fileType",
+          "type": "string",
+          "description": "Type of file this rule applies to",
+          "required": true
+        },
+        {
+          "name": "severity",
+          "type": "string",
+          "description": "Severity level if this rule is violated",
+          "required": true,
+          "validation": {
+            "pattern": "^(error|warning|info)$"
+          }
+        },
+        {
+          "name": "implementation",
+          "type": "string",
+          "description": "Reference to the implementation of this rule",
+          "required": true
+        },
+        {
+          "name": "enabled",
+          "type": "boolean",
+          "description": "Whether this rule is currently enabled",
+          "required": true,
+          "default": true
+        }
+      ],
+      "relationships": [
+        {
+          "name": "schema",
+          "type": "many-to-one",
+          "target": "ValidationSchema"
+        },
+        {
+          "name": "issues",
+          "type": "one-to-many",
+          "target": "ValidationIssue"
+        }
+      ]
+    },
+    {
+      "name": "ValidationResult",
+      "attributes": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "Unique identifier for the validation result",
+          "required": true,
+          "unique": true
+        },
+        {
+          "name": "componentId",
+          "type": "string",
+          "description": "ID of the component that was validated",
+          "required": true
+        },
+        {
+          "name": "componentVersion",
+          "type": "string",
+          "description": "Version of the component that was validated",
+          "required": true,
+          "validation": {
+            "pattern": "^\\d+\\.\\d+\\.\\d+$"
+          }
+        },
+        {
+          "name": "timestamp",
+          "type": "datetime",
+          "description": "When the validation was performed",
+          "required": true
+        },
+        {
+          "name": "validatedBy",
+          "type": "string",
+          "description": "ID of the user or system that initiated the validation",
+          "required": true
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "description": "Overall status of the validation",
+          "required": true,
+          "validation": {
+            "pattern": "^(passed|failed|warning)$"
+          }
+        },
+        {
+          "name": "errorCount",
+          "type": "integer",
+          "description": "Number of errors found",
+          "required": true,
+          "default": 0
+        },
+        {
+          "name": "warningCount",
+          "type": "integer",
+          "description": "Number of warnings found",
+          "required": true,
+          "default": 0
+        },
+        {
+          "name": "infoCount",
+          "type": "integer",
+          "description": "Number of informational issues found",
+          "required": true,
+          "default": 0
+        },
+        {
+          "name": "executionTimeMs",
+          "type": "integer",
+          "description": "Time taken to perform the validation in milliseconds",
+          "required": true,
+          "validation": {
+            "minimum": 0
+          }
+        }
+      ],
+      "relationships": [
+        {
+          "name": "issues",
+          "type": "one-to-many",
+          "target": "ValidationIssue"
+        }
+      ]
+    },
+    {
+      "name": "ValidationIssue",
+      "attributes": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "Unique identifier for the validation issue",
+          "required": true,
+          "unique": true
+        },
+        {
+          "name": "resultId",
+          "type": "string",
+          "description": "ID of the validation result this issue belongs to",
+          "required": true
+        },
+        {
+          "name": "ruleId",
+          "type": "string",
+          "description": "ID of the validation rule that was violated",
+          "required": true
+        },
+        {
+          "name": "severity",
+          "type": "string",
+          "description": "Severity level of this issue",
+          "required": true,
+          "validation": {
+            "pattern": "^(error|warning|info)$"
+          }
+        },
+        {
+          "name": "message",
+          "type": "string",
+          "description": "Description of the issue",
+          "required": true
+        },
+        {
+          "name": "filePath",
+          "type": "string",
+          "description": "Path to the file where the issue was found",
+          "required": true
+        },
+        {
+          "name": "lineNumber",
+          "type": "integer",
+          "description": "Line number where the issue was found",
+          "required": false,
+          "validation": {
+            "minimum": 1
+          }
+        },
+        {
+          "name": "columnNumber",
+          "type": "integer",
+          "description": "Column number where the issue was found",
+          "required": false,
+          "validation": {
+            "minimum": 1
+          }
+        },
+        {
+          "name": "suggestion",
+          "type": "string",
+          "description": "Suggested fix for the issue",
+          "required": false
+        }
+      ],
+      "relationships": [
+        {
+          "name": "result",
+          "type": "many-to-one",
+          "target": "ValidationResult"
+        },
+        {
+          "name": "rule",
+          "type": "many-to-one",
+          "target": "ValidationRule"
+        }
+      ]
+    },
+    {
+      "name": "ReportTemplate",
+      "attributes": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "Unique identifier for the report template",
+          "required": true,
+          "unique": true
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "description": "Name of the report template",
+          "required": true,
+          "validation": {
+            "minLength": 3,
+            "maxLength": 100
+          }
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "description": "Description of the report template",
+          "required": true
+        },
+        {
+          "name": "format",
+          "type": "string",
+          "description": "Format of the report (e.g., HTML, JSON, Markdown)",
+          "required": true,
+          "validation": {
+            "pattern": "^(HTML|JSON|Markdown|Plain Text)$"
+          }
+        },
+        {
+          "name": "template",
+          "type": "string",
+          "description": "The actual template content",
+          "required": true
+        },
+        {
+          "name": "isDefault",
+          "type": "boolean",
+          "description": "Whether this is the default template for its format",
+          "required": true,
+          "default": false
+        }
+      ]
+    },
+    {
+      "name": "ValidationStatistic",
+      "attributes": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "Unique identifier for the statistic",
+          "required": true,
+          "unique": true
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "description": "Name of the statistic",
+          "required": true
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "description": "Description of what this statistic measures",
+          "required": true
+        },
+        {
+          "name": "period",
+          "type": "string",
+          "description": "Time period this statistic covers",
+          "required": true,
+          "validation": {
+            "pattern": "^(daily|weekly|monthly|quarterly|yearly|all-time)$"
+          }
+        },
+        {
+          "name": "value",
+          "type": "number",
+          "description": "The calculated value of the statistic",
+          "required": true
+        },
+        {
+          "name": "unit",
+          "type": "string",
+          "description": "Unit of measurement for the statistic",
+          "required": true
+        },
+        {
+          "name": "timestamp",
+          "type": "datetime",
+          "description": "When this statistic was calculated",
+          "required": true
+        }
+      ]
+    }
+  ]
+}
