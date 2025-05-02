@@ -1,0 +1,27 @@
+{
+  "name": "@specky/component-storage",
+  "version": "0.1.0",
+  "description": "Responsible for managing the storage, versioning, and retrieval of Specky component specifications. Handles the entire lifecycle of component packages, from initial upload to download, including versioning according to semantic versioning principles.",
+  "author": {
+    "name": "Specky Team",
+    "email": "team@specky.dev"
+  },
+  "license": "MIT",
+  "keywords": [
+    "component",
+    "storage",
+    "retrieval",
+    "versioning",
+    "semantic versioning",
+    "package management",
+    "component lifecycle",
+    "publishing",
+    "deprecation"
+  ],
+  "dependencies": {
+    "@specky/user-management": "^0.1.0",
+    "@specky/dependency-management": "^0.1.0",
+    "@specky/search-discovery": "^0.1.0",
+    "@specky/validation-service": "^0.1.0"
+  }
+}
