@@ -17,46 +17,46 @@ The User Management component handles all aspects of user accounts within the Sp
 ### Feature: User Registration and Authentication
 
 - Use Case: A user registers using an OAuth provider
-  - Rule: Support multiple OAuth providers (GitHub, Google, etc.)
-  - Rule: Extract basic profile information from OAuth provider
-  - Rule: Create a new user record if the user doesn't exist
-  - Rule: Update user information if the user already exists
-  - Rule: Generate and provide access tokens for API authentication
+  - Rule: The system must support multiple OAuth providers (GitHub, Google, etc.)
+  - Rule: Basic profile information must be extracted from the OAuth provider
+  - Rule: A new user record must be created if the user doesn't exist
+  - Rule: User information must be updated if the user already exists
+  - Rule: Access tokens for API authentication must be generated and provided
 
 - Use Case: A user logs in to the system
-  - Rule: Validate OAuth credentials
-  - Rule: Issue JWT tokens for authenticated sessions
-  - Rule: Track login activity
-  - Rule: Refresh tokens when needed
+  - Rule: OAuth credentials must be validated
+  - Rule: JWT tokens must be issued for authenticated sessions
+  - Rule: Login activity must be tracked
+  - Rule: Tokens must be refreshed when needed
 
 - Use Case: A user logs out of the system
-  - Rule: Invalidate current session tokens
-  - Rule: Clear any session-related data
+  - Rule: Current session tokens must be invalidated
+  - Rule: All session-related data must be cleared
 
 ### Feature: User Profile Management
 
 - Use Case: A user views their profile information
-  - Rule: Display user details (username, email, etc.)
-  - Rule: Show user's published components
-  - Rule: Show user's download history
+  - Rule: User details (username, email, etc.) must be displayed
+  - Rule: The user's published components must be shown
+  - Rule: The user's download history must be shown
 
 - Use Case: A user updates their profile information
-  - Rule: Validate updated information
-  - Rule: Update profile in the database
-  - Rule: Maintain history of profile changes
+  - Rule: Updated information must be validated
+  - Rule: The profile in the database must be updated
+  - Rule: A history of profile changes must be maintained
 
 ### Feature: User Role Management
 
 - Use Case: An administrator assigns roles to users
-  - Rule: Support different role types (user, publisher, admin)
-  - Rule: Validate role assignment permissions
-  - Rule: Update user roles in the database
-  - Rule: Notify users of role changes
+  - Rule: The system must support different role types (user, publisher, admin)
+  - Rule: Role assignment permissions must be validated
+  - Rule: User roles in the database must be updated
+  - Rule: Users must be notified of role changes
 
 - Use Case: A system checks user permissions
-  - Rule: Verify user has appropriate role for requested action
-  - Rule: Deny access if permissions are insufficient
-  - Rule: Log permission check failures
+  - Rule: The user must have the appropriate role for the requested action
+  - Rule: Access must be denied if permissions are insufficient
+  - Rule: Permission check failures must be logged
 
 ## Data Management
 

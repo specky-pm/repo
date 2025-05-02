@@ -18,51 +18,51 @@ The Component Storage and Retrieval component is responsible for managing the st
 ### Feature: Component Publishing
 
 - Use Case: A user publishes a new component
-  - Rule: Validate the uploaded component package structure
-  - Rule: Extract and validate metadata from spec.json
-  - Rule: Ensure the component name is unique or the version is new
-  - Rule: Store the component package as a compressed zip in the database
-  - Rule: Index the component metadata for searching
-  - Rule: Associate the component with the publishing user
-  - Rule: Notify subscribers about the new component
+  - Rule: The uploaded component package structure must be valid
+  - Rule: Metadata from spec.json must be extracted and validated
+  - Rule: The component name must be unique or the version must be new
+  - Rule: The component package must be stored as a compressed zip in the database
+  - Rule: The component metadata must be indexed for searching
+  - Rule: The component must be associated with the publishing user
+  - Rule: Subscribers must be notified about the new component
 
 - Use Case: A user updates an existing component with a new version
-  - Rule: Validate semantic versioning rules are followed
-  - Rule: Ensure the new version is greater than existing versions
-  - Rule: Preserve previous versions while adding the new one
-  - Rule: Update component metadata index
-  - Rule: Notify users of the component update
+  - Rule: Semantic versioning rules must be followed
+  - Rule: The new version must be greater than existing versions
+  - Rule: Previous versions must be preserved while adding the new one
+  - Rule: Component metadata index must be updated
+  - Rule: Users must be notified of the component update
 
 ### Feature: Component Retrieval
 
 - Use Case: A user downloads a specific component version
-  - Rule: Verify user has access to the component
-  - Rule: Retrieve the component package from storage
-  - Rule: Track the download for statistics
-  - Rule: Serve the component as a zip file
-  - Rule: Handle concurrent downloads efficiently
+  - Rule: The user must have access to the component
+  - Rule: The component package must be retrieved from storage
+  - Rule: The download must be tracked for statistics
+  - Rule: The component must be served as a zip file
+  - Rule: Concurrent downloads must be handled efficiently
 
 - Use Case: A user lists available versions of a component
-  - Rule: Retrieve all versions of the specified component
-  - Rule: Sort versions according to semantic versioning rules
-  - Rule: Indicate deprecated versions
-  - Rule: Show relevant metadata for each version
+  - Rule: All versions of the specified component must be retrieved
+  - Rule: Versions must be sorted according to semantic versioning rules
+  - Rule: Deprecated versions must be indicated
+  - Rule: Relevant metadata for each version must be shown
 
 ### Feature: Component Lifecycle Management
 
 - Use Case: A user deprecates a component
-  - Rule: Verify user has permission to deprecate the component
-  - Rule: Mark the component as deprecated in the database
-  - Rule: Store deprecation message and timestamp
-  - Rule: Allow continued downloads but with deprecation warning
-  - Rule: Suggest alternative components if specified
+  - Rule: The user must have permission to deprecate the component
+  - Rule: The component must be marked as deprecated in the database
+  - Rule: Deprecation message and timestamp must be stored
+  - Rule: Continued downloads must be allowed but with deprecation warning
+  - Rule: Alternative components must be suggested if specified
 
 - Use Case: A user unpublishes a component version
-  - Rule: Verify user has permission to unpublish
-  - Rule: Remove the component version from active listings
-  - Rule: Maintain the record for audit purposes
-  - Rule: Handle dependent components appropriately
-  - Rule: Prevent unpublishing if other components depend on it
+  - Rule: The user must have permission to unpublish
+  - Rule: The component version must be removed from active listings
+  - Rule: The record must be maintained for audit purposes
+  - Rule: Dependent components must be handled appropriately
+  - Rule: Unpublishing must be prevented if other components depend on it
 
 ## Data Management
 

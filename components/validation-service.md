@@ -19,64 +19,64 @@ The Validation Service component ensures the integrity and correctness of compon
 ### Feature: Component Package Validation
 
 - Use Case: A system validates a component package during upload
-  - Rule: Verify the package contains all required files (spec.json, component.md)
-  - Rule: Check for optional files (datamodel.json, tests/*.feature)
-  - Rule: Validate the overall package structure
-  - Rule: Ensure no extraneous or potentially harmful files are included
-  - Rule: Verify package size is within acceptable limits
+  - Rule: The package must contain all required files (spec.json, component.md)
+  - Rule: Optional files (datamodel.json, tests/*.feature) must be checked
+  - Rule: The overall package structure must be valid
+  - Rule: No extraneous or potentially harmful files must be included
+  - Rule: Package size must be within acceptable limits
 
 - Use Case: A user requests validation of an existing component
-  - Rule: Retrieve the component package from storage
-  - Rule: Perform comprehensive validation checks
-  - Rule: Generate a detailed validation report
-  - Rule: Highlight any issues or warnings
-  - Rule: Provide suggestions for fixing validation issues
+  - Rule: The component package must be retrieved from storage
+  - Rule: Comprehensive validation checks must be performed
+  - Rule: A detailed validation report must be generated
+  - Rule: Any issues or warnings must be highlighted
+  - Rule: Suggestions for fixing validation issues must be provided
 
 ### Feature: File-Specific Validation
 
 - Use Case: A system validates a spec.json file
-  - Rule: Verify JSON syntax correctness
-  - Rule: Validate against the spec.json schema
-  - Rule: Check required fields (name, version, description)
-  - Rule: Validate semantic versioning format
-  - Rule: Verify dependency references and version ranges
+  - Rule: JSON syntax must be correct
+  - Rule: The file must be valid against the spec.json schema
+  - Rule: Required fields (name, version, description) must be present
+  - Rule: Semantic versioning format must be valid
+  - Rule: Dependency references and version ranges must be verified
 
 - Use Case: A system validates a component.md file
-  - Rule: Check for minimum required sections
-  - Rule: Verify markdown syntax
-  - Rule: Ensure adequate component description
-  - Rule: Check for broken links or references
-  - Rule: Validate against best practices
+  - Rule: Minimum required sections must be present
+  - Rule: Markdown syntax must be valid
+  - Rule: Component description must be adequate
+  - Rule: Links or references must not be broken
+  - Rule: The file must comply with best practices
 
 - Use Case: A system validates a datamodel.json file
-  - Rule: Verify JSON syntax correctness
-  - Rule: Validate against the datamodel.json schema
-  - Rule: Check entity definitions and relationships
-  - Rule: Verify attribute types and constraints
-  - Rule: Ensure referential integrity in relationships
+  - Rule: JSON syntax must be correct
+  - Rule: The file must be valid against the datamodel.json schema
+  - Rule: Entity definitions and relationships must be checked
+  - Rule: Attribute types and constraints must be verified
+  - Rule: Referential integrity in relationships must be maintained
 
 - Use Case: A system validates Gherkin feature files
-  - Rule: Check Gherkin syntax
-  - Rule: Verify feature file structure (Feature, Rule, Example)
-  - Rule: Ensure scenarios are well-formed
-  - Rule: Check for consistent terminology
-  - Rule: Validate against Gherkin best practices
+  - Rule: Gherkin syntax must be valid
+  - Rule: Feature file structure (Feature, Rule, Example) must be verified
+  - Rule: Scenarios must be well-formed
+  - Rule: Terminology must be consistent
+  - Rule: Files must comply with Gherkin best practices
 
 ### Feature: Validation Reporting
 
 - Use Case: A system generates a validation report
-  - Rule: Categorize issues by severity (error, warning, info)
-  - Rule: Provide clear error messages with line numbers
-  - Rule: Include suggestions for resolving issues
-  - Rule: Summarize validation results
-  - Rule: Format report for both human and machine consumption
+  - Rule: Issues must be categorized by severity (error, warning, info)
+  - Rule: Clear error messages with line numbers must be provided
+  - Rule: Suggestions for resolving issues must be included
+  - Rule: Validation results must be summarized
+  - Rule: The report must be formatted for both human and machine consumption
 
 - Use Case: A user interprets a validation report
-  - Rule: Present validation results in a user-friendly format
-  - Rule: Highlight critical issues that must be fixed
-  - Rule: Provide context for each validation rule
-  - Rule: Link to documentation for validation requirements
-  - Rule: Allow filtering and sorting of validation results
+  - Rule: Validation results must be presented in a user-friendly format
+  - Rule: Critical issues that must be fixed must be highlighted
+  - Rule: Context for each validation rule must be provided
+  - Rule: Documentation for validation requirements must be linked
+  - Rule: Filtering and sorting of validation results must be allowed
 
 ## Data Management
 

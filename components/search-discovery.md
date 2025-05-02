@@ -18,48 +18,48 @@ The Search and Discovery component enables users to find component specification
 ### Feature: Component Search
 
 - Use Case: A user searches for components by keyword
-  - Rule: Search component names, descriptions, and keywords
-  - Rule: Rank results by relevance
-  - Rule: Filter out deprecated components unless explicitly included
-  - Rule: Return paginated results
-  - Rule: Include basic metadata in search results
+  - Rule: Component names, descriptions, and keywords must be searched
+  - Rule: Results must be ranked by relevance
+  - Rule: Deprecated components must be filtered out unless explicitly included
+  - Rule: Results must be paginated
+  - Rule: Basic metadata must be included in search results
 
 - Use Case: A user applies filters to search results
-  - Rule: Support filtering by author/publisher
-  - Rule: Support filtering by tags/keywords
-  - Rule: Support filtering by date range
-  - Rule: Support filtering by download count
-  - Rule: Apply filters incrementally without requiring a new search
+  - Rule: Filtering by author/publisher must be supported
+  - Rule: Filtering by tags/keywords must be supported
+  - Rule: Filtering by date range must be supported
+  - Rule: Filtering by download count must be supported
+  - Rule: Filters must be applied incrementally without requiring a new search
 
 - Use Case: A user sorts search results
-  - Rule: Support sorting by relevance (default)
-  - Rule: Support sorting by publish date (newest/oldest)
-  - Rule: Support sorting by download count (most/least)
-  - Rule: Support sorting by name (alphabetical)
-  - Rule: Maintain sort order during pagination
+  - Rule: Sorting by relevance (default) must be supported
+  - Rule: Sorting by publish date (newest/oldest) must be supported
+  - Rule: Sorting by download count (most/least) must be supported
+  - Rule: Sorting by name (alphabetical) must be supported
+  - Rule: Sort order must be maintained during pagination
 
 ### Feature: Component Discovery
 
 - Use Case: A user browses popular components
-  - Rule: Rank components by download count
-  - Rule: Update rankings regularly
-  - Rule: Exclude deprecated components
-  - Rule: Provide categorized popular components
-  - Rule: Allow time-based filtering (popular this week/month/year)
+  - Rule: Components must be ranked by download count
+  - Rule: Rankings must be updated regularly
+  - Rule: Deprecated components must be excluded
+  - Rule: Categorized popular components must be provided
+  - Rule: Time-based filtering (popular this week/month/year) must be allowed
 
 - Use Case: A user explores related components
-  - Rule: Find components with similar tags/keywords
-  - Rule: Find components from the same author
-  - Rule: Find components that are commonly downloaded together
-  - Rule: Find components with similar dependencies
-  - Rule: Rank related components by relevance
+  - Rule: Components with similar tags/keywords must be found
+  - Rule: Components from the same author must be found
+  - Rule: Components that are commonly downloaded together must be found
+  - Rule: Components with similar dependencies must be found
+  - Rule: Related components must be ranked by relevance
 
 - Use Case: A user discovers trending components
-  - Rule: Identify components with rapidly increasing downloads
-  - Rule: Focus on recent activity (last 7/30 days)
-  - Rule: Update trending list frequently
-  - Rule: Provide context for why a component is trending
-  - Rule: Allow filtering of trending components by category
+  - Rule: Components with rapidly increasing downloads must be identified
+  - Rule: Recent activity (last 7/30 days) must be the focus
+  - Rule: The trending list must be updated frequently
+  - Rule: Context for why a component is trending must be provided
+  - Rule: Filtering of trending components by category must be allowed
 
 ## Data Management
 

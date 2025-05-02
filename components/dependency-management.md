@@ -18,49 +18,49 @@ The Dependency Management component handles the relationships between different 
 ### Feature: Dependency Declaration and Tracking
 
 - Use Case: A component declares dependencies on other components
-  - Rule: Validate dependency declarations in spec.json
-  - Rule: Support semantic versioning ranges for dependencies
-  - Rule: Store dependency relationships in the database
-  - Rule: Differentiate between regular, dev, peer, and optional dependencies
-  - Rule: Verify that declared dependencies exist in the repository
+  - Rule: Dependency declarations in spec.json must be validated
+  - Rule: Semantic versioning ranges for dependencies must be supported
+  - Rule: Dependency relationships must be stored in the database
+  - Rule: Regular, dev, peer, and optional dependencies must be differentiated
+  - Rule: Declared dependencies must exist in the repository
 
 - Use Case: A system tracks components that depend on a specific component
-  - Rule: Maintain reverse dependency relationships
-  - Rule: Update dependency relationships when new versions are published
-  - Rule: Provide API to query dependents of a component
-  - Rule: Track dependency usage statistics
+  - Rule: Reverse dependency relationships must be maintained
+  - Rule: Dependency relationships must be updated when new versions are published
+  - Rule: API to query dependents of a component must be provided
+  - Rule: Dependency usage statistics must be tracked
 
 ### Feature: Dependency Resolution
 
 - Use Case: A user resolves dependencies for a component
-  - Rule: Resolve semantic version ranges to specific versions
-  - Rule: Handle nested dependencies recursively
-  - Rule: Detect and resolve version conflicts
-  - Rule: Optimize for minimal dependency tree
-  - Rule: Support dependency resolution constraints
+  - Rule: Semantic version ranges must be resolved to specific versions
+  - Rule: Nested dependencies must be handled recursively
+  - Rule: Version conflicts must be detected and resolved
+  - Rule: The dependency tree must be optimized for minimal size
+  - Rule: Dependency resolution constraints must be supported
 
 - Use Case: A system validates dependency compatibility
-  - Rule: Check version compatibility according to semver rules
-  - Rule: Identify breaking changes between versions
-  - Rule: Warn about potentially incompatible dependencies
-  - Rule: Validate peer dependency requirements
-  - Rule: Report detailed compatibility information
+  - Rule: Version compatibility must be checked according to semver rules
+  - Rule: Breaking changes between versions must be identified
+  - Rule: Warnings about potentially incompatible dependencies must be provided
+  - Rule: Peer dependency requirements must be validated
+  - Rule: Detailed compatibility information must be reported
 
 ### Feature: Dependency Analysis
 
 - Use Case: A user views the dependency graph for a component
-  - Rule: Generate a visual representation of dependencies
-  - Rule: Show direct and transitive dependencies
-  - Rule: Highlight circular dependencies
-  - Rule: Indicate dependency types (regular, dev, peer, optional)
-  - Rule: Allow interactive exploration of the dependency graph
+  - Rule: A visual representation of dependencies must be generated
+  - Rule: Direct and transitive dependencies must be shown
+  - Rule: Circular dependencies must be highlighted
+  - Rule: Dependency types (regular, dev, peer, optional) must be indicated
+  - Rule: Interactive exploration of the dependency graph must be allowed
 
 - Use Case: A user analyzes the impact of updating a component
-  - Rule: Identify all affected dependent components
-  - Rule: Assess compatibility risks based on semver rules
-  - Rule: Provide detailed impact reports
-  - Rule: Suggest version update strategies
-  - Rule: Simulate dependency resolution with the update
+  - Rule: All affected dependent components must be identified
+  - Rule: Compatibility risks based on semver rules must be assessed
+  - Rule: Detailed impact reports must be provided
+  - Rule: Version update strategies must be suggested
+  - Rule: Dependency resolution with the update must be simulated
 
 ## Data Management
 

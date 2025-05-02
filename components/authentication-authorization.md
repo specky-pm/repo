@@ -18,48 +18,48 @@ The Authentication and Authorization component manages user identity verificatio
 ### Feature: OAuth Authentication
 
 - Use Case: A user initiates authentication with an OAuth provider
-  - Rule: Present OAuth provider options to the user
-  - Rule: Redirect to the selected provider's authentication page
-  - Rule: Handle OAuth callback with authorization code
-  - Rule: Exchange authorization code for access token
-  - Rule: Retrieve user profile information from the provider
-  - Rule: Create or update local user record
+  - Rule: OAuth provider options must be presented to the user
+  - Rule: The user must be redirected to the selected provider's authentication page
+  - Rule: OAuth callback with authorization code must be handled
+  - Rule: Authorization code must be exchanged for access token
+  - Rule: User profile information must be retrieved from the provider
+  - Rule: Local user record must be created or updated
 
 - Use Case: A system validates an authentication token
-  - Rule: Verify token signature
-  - Rule: Check token expiration
-  - Rule: Validate token claims
-  - Rule: Retrieve associated user information
-  - Rule: Handle token refresh when needed
+  - Rule: Token signature must be verified
+  - Rule: Token expiration must be checked
+  - Rule: Token claims must be validated
+  - Rule: Associated user information must be retrieved
+  - Rule: Token refresh must be handled when needed
 
 - Use Case: A user logs out from the system
-  - Rule: Invalidate current authentication tokens
-  - Rule: Remove session information
-  - Rule: Redirect user to appropriate post-logout page
-  - Rule: Handle single sign-out if applicable
+  - Rule: Current authentication tokens must be invalidated
+  - Rule: Session information must be removed
+  - Rule: The user must be redirected to appropriate post-logout page
+  - Rule: Single sign-out must be handled if applicable
 
 ### Feature: Authorization Management
 
 - Use Case: A system checks if a user can perform an action
-  - Rule: Retrieve user's roles and permissions
-  - Rule: Evaluate permission requirements for the action
-  - Rule: Apply role-based access control rules
-  - Rule: Consider resource ownership in permission checks
-  - Rule: Log authorization decisions for audit purposes
+  - Rule: User's roles and permissions must be retrieved
+  - Rule: Permission requirements for the action must be evaluated
+  - Rule: Role-based access control rules must be applied
+  - Rule: Resource ownership must be considered in permission checks
+  - Rule: Authorization decisions must be logged for audit purposes
 
 - Use Case: An administrator manages user roles
-  - Rule: Allow role assignment based on administrator permissions
-  - Rule: Validate role changes against system constraints
-  - Rule: Update user role information in the database
-  - Rule: Apply role changes immediately to active sessions
-  - Rule: Notify affected users of role changes
+  - Rule: Role assignment must be allowed based on administrator permissions
+  - Rule: Role changes must be validated against system constraints
+  - Rule: User role information in the database must be updated
+  - Rule: Role changes must be applied immediately to active sessions
+  - Rule: Affected users must be notified of role changes
 
 - Use Case: A system manages resource ownership
-  - Rule: Assign ownership when resources are created
-  - Rule: Verify ownership for protected operations
-  - Rule: Support ownership transfer between users
-  - Rule: Handle orphaned resources when users are removed
-  - Rule: Support team/group ownership models
+  - Rule: Ownership must be assigned when resources are created
+  - Rule: Ownership must be verified for protected operations
+  - Rule: Ownership transfer between users must be supported
+  - Rule: Orphaned resources must be handled when users are removed
+  - Rule: Team/group ownership models must be supported
 
 ## Data Management
 
