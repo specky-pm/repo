@@ -1,0 +1,280 @@
+{
+  "entities": [
+    {
+      "name": "DependencyRelationship",
+      "attributes": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "Unique identifier for the dependency relationship",
+          "required": true,
+          "unique": true
+        },
+        {
+          "name": "sourceComponentId",
+          "type": "string",
+          "description": "ID of the component that has the dependency",
+          "required": true
+        },
+        {
+          "name": "targetComponentId",
+          "type": "string",
+          "description": "ID of the component that is depended upon",
+          "required": true
+        },
+        {
+          "name": "dependencyType",
+          "type": "string",
+          "description": "Type of dependency (regular, dev, peer, optional)",
+          "required": true,
+          "validation": {
+            "pattern": "^(regular|dev|peer|optional)$"
+          }
+        },
+        {
+          "name": "versionConstraint",
+          "type": "string",
+          "description": "Semantic version range constraint",
+          "required": true
+        },
+        {
+          "name": "resolvedVersion",
+          "type": "string",
+          "description": "Specific version that was resolved from the constraint",
+          "required": false
+        },
+        {
+          "name": "createdAt",
+          "type": "string",
+          "description": "Date and time when the dependency relationship was created",
+          "required": true
+        },
+        {
+          "name": "updatedAt",
+          "type": "string",
+          "description": "Date and time when the dependency relationship was last updated",
+          "required": true
+        }
+      ],
+      "relationships": [
+        {
+          "name": "sourceComponent",
+          "type": "many-to-one",
+          "target": "Component"
+        },
+        {
+          "name": "targetComponent",
+          "type": "many-to-one",
+          "target": "Component"
+        },
+        {
+          "name": "resolutionHistory",
+          "type": "one-to-many",
+          "target": "DependencyResolution"
+        }
+      ]
+    },
+    {
+      "name": "DependencyResolution",
+      "attributes": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "Unique identifier for the dependency resolution",
+          "required": true,
+          "unique": true
+        },
+        {
+          "name": "dependencyRelationshipId",
+          "type": "string",
+          "description": "ID of the dependency relationship",
+          "required": true
+        },
+        {
+          "name": "resolvedVersion",
+          "type": "string",
+          "description": "Specific version that was resolved",
+          "required": true
+        },
+        {
+          "name": "resolutionTimestamp",
+          "type": "string",
+          "description": "Date and time when the resolution occurred",
+          "required": true
+        },
+        {
+          "name": "resolutionContext",
+          "type": "object",
+          "description": "Context information about the resolution process",
+          "required": false
+        },
+        {
+          "name": "hasConflicts",
+          "type": "boolean",
+          "description": "Indicates if there were conflicts during resolution",
+          "required": true
+        },
+        {
+          "name": "conflictDetails",
+          "type": "object",
+          "description": "Details about any conflicts that occurred",
+          "required": false
+        }
+      ],
+      "relationships": [
+        {
+          "name": "dependencyRelationship",
+          "type": "many-to-one",
+          "target": "DependencyRelationship"
+        }
+      ]
+    },
+    {
+      "name": "DependencyGraph",
+      "attributes": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "Unique identifier for the dependency graph",
+          "required": true,
+          "unique": true
+        },
+        {
+          "name": "rootComponentId",
+          "type": "string",
+          "description": "ID of the root component for this graph",
+          "required": true
+        },
+        {
+          "name": "graphData",
+          "type": "object",
+          "description": "Structured data representing the dependency graph",
+          "required": true
+        },
+        {
+          "name": "createdAt",
+          "type": "string",
+          "description": "Date and time when the graph was created",
+          "required": true
+        },
+        {
+          "name": "hasCircularDependencies",
+          "type": "boolean",
+          "description": "Indicates if circular dependencies were detected",
+          "required": true
+        },
+        {
+          "name": "circularDependencyPaths",
+          "type": "array",
+          "description": "Paths of any circular dependencies found",
+          "required": false
+        }
+      ],
+      "relationships": [
+        {
+          "name": "rootComponent",
+          "type": "many-to-one",
+          "target": "Component"
+        }
+      ]
+    },
+    {
+      "name": "ImpactAnalysis",
+      "attributes": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "Unique identifier for the impact analysis",
+          "required": true,
+          "unique": true
+        },
+        {
+          "name": "targetComponentId",
+          "type": "string",
+          "description": "ID of the component being analyzed for impact",
+          "required": true
+        },
+        {
+          "name": "currentVersion",
+          "type": "string",
+          "description": "Current version of the target component",
+          "required": true
+        },
+        {
+          "name": "proposedVersion",
+          "type": "string",
+          "description": "Proposed new version of the target component",
+          "required": true
+        },
+        {
+          "name": "affectedComponents",
+          "type": "array",
+          "description": "List of components affected by the update",
+          "required": true
+        },
+        {
+          "name": "compatibilityRisks",
+          "type": "object",
+          "description": "Assessment of compatibility risks based on semver rules",
+          "required": true
+        },
+        {
+          "name": "updateStrategies",
+          "type": "array",
+          "description": "Suggested strategies for updating dependencies",
+          "required": false
+        },
+        {
+          "name": "analysisTimestamp",
+          "type": "string",
+          "description": "Date and time when the analysis was performed",
+          "required": true
+        }
+      ],
+      "relationships": [
+        {
+          "name": "targetComponent",
+          "type": "many-to-one",
+          "target": "Component"
+        }
+      ]
+    },
+    {
+      "name": "CompatibilityMatrix",
+      "attributes": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "Unique identifier for the compatibility matrix",
+          "required": true,
+          "unique": true
+        },
+        {
+          "name": "componentId",
+          "type": "string",
+          "description": "ID of the component this matrix is for",
+          "required": true
+        },
+        {
+          "name": "matrixData",
+          "type": "object",
+          "description": "Structured data representing version compatibility",
+          "required": true
+        },
+        {
+          "name": "lastUpdated",
+          "type": "string",
+          "description": "Date and time when the matrix was last updated",
+          "required": true
+        }
+      ],
+      "relationships": [
+        {
+          "name": "component",
+          "type": "many-to-one",
+          "target": "Component"
+        }
+      ]
+    }
+  ]
+}
