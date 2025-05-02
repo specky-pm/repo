@@ -1,0 +1,293 @@
+{
+  "entities": [
+    {
+      "name": "SearchIndex",
+      "attributes": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "Unique identifier for the search index entry",
+          "required": true,
+          "unique": true
+        },
+        {
+          "name": "componentId",
+          "type": "string",
+          "description": "Reference to the component being indexed",
+          "required": true
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "description": "Component name for searching",
+          "required": true
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "description": "Component description for searching",
+          "required": true
+        },
+        {
+          "name": "keywords",
+          "type": "array",
+          "description": "Keywords associated with the component",
+          "required": true
+        },
+        {
+          "name": "author",
+          "type": "string",
+          "description": "Author of the component",
+          "required": true
+        },
+        {
+          "name": "publishDate",
+          "type": "string",
+          "description": "Date when the component was published",
+          "required": true
+        },
+        {
+          "name": "downloadCount",
+          "type": "number",
+          "description": "Number of times the component has been downloaded",
+          "required": true
+        },
+        {
+          "name": "isDeprecated",
+          "type": "boolean",
+          "description": "Flag indicating if the component is deprecated",
+          "required": true
+        },
+        {
+          "name": "lastUpdated",
+          "type": "string",
+          "description": "Date when the index entry was last updated",
+          "required": true
+        }
+      ],
+      "relationships": [
+        {
+          "name": "relatedComponents",
+          "type": "many-to-many",
+          "target": "ComponentRelationship"
+        }
+      ]
+    },
+    {
+      "name": "ComponentRelationship",
+      "attributes": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "Unique identifier for the relationship",
+          "required": true,
+          "unique": true
+        },
+        {
+          "name": "sourceComponentId",
+          "type": "string",
+          "description": "ID of the source component",
+          "required": true
+        },
+        {
+          "name": "targetComponentId",
+          "type": "string",
+          "description": "ID of the related component",
+          "required": true
+        },
+        {
+          "name": "relationshipType",
+          "type": "string",
+          "description": "Type of relationship (similar-tags, same-author, downloaded-together, similar-dependencies)",
+          "required": true
+        },
+        {
+          "name": "relevanceScore",
+          "type": "number",
+          "description": "Score indicating the strength of the relationship",
+          "required": true
+        },
+        {
+          "name": "lastUpdated",
+          "type": "string",
+          "description": "Date when the relationship was last updated",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "SearchQuery",
+      "attributes": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "Unique identifier for the search query",
+          "required": true,
+          "unique": true
+        },
+        {
+          "name": "queryText",
+          "type": "string",
+          "description": "The text of the search query",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "string",
+          "description": "ID of the user who performed the search (if authenticated)",
+          "required": false
+        },
+        {
+          "name": "timestamp",
+          "type": "string",
+          "description": "Date and time when the search was performed",
+          "required": true
+        },
+        {
+          "name": "filters",
+          "type": "object",
+          "description": "Filters applied to the search",
+          "required": false
+        },
+        {
+          "name": "sortBy",
+          "type": "string",
+          "description": "Sorting method used for the search results",
+          "required": false
+        },
+        {
+          "name": "resultCount",
+          "type": "number",
+          "description": "Number of results returned by the search",
+          "required": true
+        },
+        {
+          "name": "clickedResults",
+          "type": "array",
+          "description": "IDs of results that were clicked by the user",
+          "required": false
+        },
+        {
+          "name": "abandoned",
+          "type": "boolean",
+          "description": "Flag indicating if the search was abandoned without clicking any results",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "TrendingComponent",
+      "attributes": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "Unique identifier for the trending entry",
+          "required": true,
+          "unique": true
+        },
+        {
+          "name": "componentId",
+          "type": "string",
+          "description": "Reference to the component that is trending",
+          "required": true
+        },
+        {
+          "name": "period",
+          "type": "string",
+          "description": "Time period for the trending calculation (daily, weekly, monthly)",
+          "required": true
+        },
+        {
+          "name": "growthRate",
+          "type": "number",
+          "description": "Rate of growth in downloads or activity",
+          "required": true
+        },
+        {
+          "name": "category",
+          "type": "string",
+          "description": "Category of the trending component",
+          "required": false
+        },
+        {
+          "name": "trendingReason",
+          "type": "string",
+          "description": "Context explaining why the component is trending",
+          "required": false
+        },
+        {
+          "name": "startDate",
+          "type": "string",
+          "description": "Start date of the trending period",
+          "required": true
+        },
+        {
+          "name": "endDate",
+          "type": "string",
+          "description": "End date of the trending period",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "SearchStatistics",
+      "attributes": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "Unique identifier for the statistics entry",
+          "required": true,
+          "unique": true
+        },
+        {
+          "name": "period",
+          "type": "string",
+          "description": "Time period for the statistics (daily, weekly, monthly)",
+          "required": true
+        },
+        {
+          "name": "commonSearchTerms",
+          "type": "object",
+          "description": "Map of common search terms and their frequencies",
+          "required": true
+        },
+        {
+          "name": "clickThroughRate",
+          "type": "number",
+          "description": "Average click-through rate for search results",
+          "required": true
+        },
+        {
+          "name": "abandonmentRate",
+          "type": "number",
+          "description": "Rate at which searches are abandoned without clicking results",
+          "required": true
+        },
+        {
+          "name": "filterUsage",
+          "type": "object",
+          "description": "Statistics on filter usage",
+          "required": true
+        },
+        {
+          "name": "averageResponseTime",
+          "type": "number",
+          "description": "Average time to respond to search queries in milliseconds",
+          "required": true
+        },
+        {
+          "name": "startDate",
+          "type": "string",
+          "description": "Start date of the statistics period",
+          "required": true
+        },
+        {
+          "name": "endDate",
+          "type": "string",
+          "description": "End date of the statistics period",
+          "required": true
+        }
+      ]
+    }
+  ]
+}
