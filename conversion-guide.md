@@ -36,8 +36,8 @@ Extract metadata from each component specification to create a `spec.json` file:
 
 ```json
 {
-  "name": "user-management",
-  "version": "1.0.0",
+  "name": "@specky/user-management",
+  "version": "0.1.0",
   "description": "User management component for the Specky repository",
   "author": {
     "name": "Your Name",
@@ -46,16 +46,27 @@ Extract metadata from each component specification to create a `spec.json` file:
   "license": "MIT",
   "keywords": ["user", "authentication", "profile"],
   "dependencies": {
-    "authentication-authorization": "^1.0.0"
+    "authentication-authorization": "^0.1.0"
   }
 }
 ```
 
 Key points:
 - Use the component name as the package name
-- Start with version 1.0.0
+- Use @specky as the component namespace e.g. `@specky/component-name`
+- Start with version 0.1.0 because we're still in development
 - Include relevant keywords
 - Define dependencies on other components
+
+#### Validating spec.json
+
+There is a linter available on the command line that you can use to verify the `spec.json`. For example:
+```bash
+specky-lint --no-datamodel path/to/component/dir
+```
+
+The linter will tell you if there are any problems with the `spec.json` file you've created
+Note: we use the `--no-datamodel` option to exclude the `datamodel.json` file from the validation, since it doesn't exist yet
 
 ### Step 3: Convert to component.md
 
@@ -136,6 +147,17 @@ Extract entity definitions from the "Data Management" section of each component 
 }
 ```
 
+#### Validating spec.json
+
+There is a linter available on the command line that you can use to verify the `datamodel.json`. For example:
+```bash
+specky-lint --no-spec path/to/component/dir
+```
+
+The linter will tell you if there are any problems with the `datamodel.json` file you've created.
+Note: we use the `--no-spec` option to exclude the `spec.json` file from the validation so we can focus on the datamodel.
+
+
 ### Step 5: Create Gherkin Feature Files
 
 Convert the "Features & Use Cases" sections into Gherkin feature files in the `tests/` directory:
@@ -178,10 +200,10 @@ tests/
 
 ## Validation
 
-After converting each component, validate it using the Specky validation tools:
+After converting each component, validate it using the specky-lint validation tool to find any issues:
 
 ```bash
-spm validate user-management
+specky-lint components/user-management
 ```
 
 Ensure that:
@@ -198,8 +220,6 @@ When defining dependencies in `spec.json`, follow these guidelines:
 2. Only include direct dependencies
 3. Categorize dependencies appropriately:
    - `dependencies`: Required components
-   - `peerDependencies`: Components expected to be provided by the consumer
-   - `optionalDependencies`: Components that enhance functionality but aren't required
 
 ## Example
 
