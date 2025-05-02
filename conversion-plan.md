@@ -7,7 +7,7 @@ This document outlines the step-by-step plan for converting the markdown compone
 We need to convert 6 component specifications from the `doc/component-markdown` directory to Specky component format. Each component will have its own directory with the following structure:
 
 ```
-specky-repo-components/
+./components/
 ├── component-name/
 │   ├── spec.json
 │   ├── component.md
