@@ -1,0 +1,25 @@
+{
+  "name": "@specky/user-management",
+  "version": "0.1.0",
+  "description": "Handles all aspects of user accounts within the Specky repository system, including user registration, profile information, and activity tracking.",
+  "author": {
+    "name": "Specky Team",
+    "email": "team@specky.dev"
+  },
+  "license": "MIT",
+  "keywords": [
+    "user",
+    "authentication",
+    "oauth",
+    "profile",
+    "roles",
+    "permissions",
+    "registration",
+    "activity tracking"
+  ],
+  "dependencies": {
+    "@specky/authentication-authorization": "^0.1.0",
+    "@specky/component-storage": "^0.1.0",
+    "@specky/dependency-management": "^0.1.0"
+  }
+}

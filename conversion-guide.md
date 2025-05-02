@@ -18,7 +18,7 @@ As described in the documentation, a Specky component consists of:
 For each component specification (e.g., `user-management.md`), create a directory structure:
 
 ```
-specky-repo-components/
+components/
 ├── user-management/
 │   ├── spec.json
 │   ├── component.md
@@ -46,7 +46,7 @@ Extract metadata from each component specification to create a `spec.json` file:
   "license": "MIT",
   "keywords": ["user", "authentication", "profile"],
   "dependencies": {
-    "authentication-authorization": "^0.1.0"
+    "@specky/authentication-authorization": "^0.1.0"
   }
 }
 ```
