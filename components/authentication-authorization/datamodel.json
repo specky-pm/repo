@@ -1,0 +1,408 @@
+{
+  "entities": [
+    {
+      "name": "OAuthProvider",
+      "attributes": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "Unique identifier for the OAuth provider",
+          "required": true,
+          "unique": true
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "description": "Display name of the OAuth provider",
+          "required": true
+        },
+        {
+          "name": "clientId",
+          "type": "string",
+          "description": "Client ID for the OAuth provider",
+          "required": true
+        },
+        {
+          "name": "clientSecret",
+          "type": "string",
+          "description": "Client secret for the OAuth provider",
+          "required": true
+        },
+        {
+          "name": "authorizationUrl",
+          "type": "string",
+          "description": "Authorization URL for the OAuth provider",
+          "required": true
+        },
+        {
+          "name": "tokenUrl",
+          "type": "string",
+          "description": "Token URL for the OAuth provider",
+          "required": true
+        },
+        {
+          "name": "userInfoUrl",
+          "type": "string",
+          "description": "User info URL for the OAuth provider",
+          "required": true
+        },
+        {
+          "name": "callbackUrl",
+          "type": "string",
+          "description": "Callback URL for the OAuth provider",
+          "required": true
+        },
+        {
+          "name": "scope",
+          "type": "string",
+          "description": "Scope for the OAuth provider",
+          "required": true
+        },
+        {
+          "name": "active",
+          "type": "boolean",
+          "description": "Whether the OAuth provider is active",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "AuthToken",
+      "attributes": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "Unique identifier for the token",
+          "required": true,
+          "unique": true
+        },
+        {
+          "name": "userId",
+          "type": "string",
+          "description": "ID of the user the token belongs to",
+          "required": true
+        },
+        {
+          "name": "token",
+          "type": "string",
+          "description": "The actual token value",
+          "required": true,
+          "unique": true
+        },
+        {
+          "name": "type",
+          "type": "string",
+          "description": "Type of token (access, refresh, etc.)",
+          "required": true
+        },
+        {
+          "name": "issuedAt",
+          "type": "string",
+          "description": "Timestamp when the token was issued",
+          "required": true
+        },
+        {
+          "name": "expiresAt",
+          "type": "string",
+          "description": "Timestamp when the token expires",
+          "required": true
+        },
+        {
+          "name": "revoked",
+          "type": "boolean",
+          "description": "Whether the token has been revoked",
+          "required": true
+        }
+      ],
+      "relationships": [
+        {
+          "name": "user",
+          "type": "many-to-one",
+          "target": "User"
+        }
+      ]
+    },
+    {
+      "name": "RevokedToken",
+      "attributes": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "Unique identifier for the revoked token entry",
+          "required": true,
+          "unique": true
+        },
+        {
+          "name": "tokenId",
+          "type": "string",
+          "description": "ID of the revoked token",
+          "required": true
+        },
+        {
+          "name": "revokedAt",
+          "type": "string",
+          "description": "Timestamp when the token was revoked",
+          "required": true
+        },
+        {
+          "name": "reason",
+          "type": "string",
+          "description": "Reason for token revocation",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "AuthLog",
+      "attributes": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "Unique identifier for the authentication log entry",
+          "required": true,
+          "unique": true
+        },
+        {
+          "name": "userId",
+          "type": "string",
+          "description": "ID of the user associated with the log entry",
+          "required": false
+        },
+        {
+          "name": "action",
+          "type": "string",
+          "description": "Authentication action (login, logout, token refresh, etc.)",
+          "required": true
+        },
+        {
+          "name": "timestamp",
+          "type": "string",
+          "description": "Timestamp when the action occurred",
+          "required": true
+        },
+        {
+          "name": "ipAddress",
+          "type": "string",
+          "description": "IP address from which the action was performed",
+          "required": false
+        },
+        {
+          "name": "userAgent",
+          "type": "string",
+          "description": "User agent from which the action was performed",
+          "required": false
+        },
+        {
+          "name": "success",
+          "type": "boolean",
+          "description": "Whether the authentication action was successful",
+          "required": true
+        },
+        {
+          "name": "failureReason",
+          "type": "string",
+          "description": "Reason for authentication failure if applicable",
+          "required": false
+        }
+      ],
+      "relationships": [
+        {
+          "name": "user",
+          "type": "many-to-one",
+          "target": "User"
+        }
+      ]
+    },
+    {
+      "name": "Role",
+      "attributes": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "Unique identifier for the role",
+          "required": true,
+          "unique": true
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "description": "Name of the role",
+          "required": true,
+          "unique": true
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "description": "Description of the role",
+          "required": false
+        },
+        {
+          "name": "isSystem",
+          "type": "boolean",
+          "description": "Whether this is a system-defined role",
+          "required": true
+        }
+      ],
+      "relationships": [
+        {
+          "name": "permissions",
+          "type": "many-to-many",
+          "target": "Permission"
+        }
+      ]
+    },
+    {
+      "name": "Permission",
+      "attributes": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "Unique identifier for the permission",
+          "required": true,
+          "unique": true
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "description": "Name of the permission",
+          "required": true,
+          "unique": true
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "description": "Description of the permission",
+          "required": false
+        },
+        {
+          "name": "resource",
+          "type": "string",
+          "description": "Resource the permission applies to",
+          "required": true
+        },
+        {
+          "name": "action",
+          "type": "string",
+          "description": "Action the permission allows (read, write, delete, etc.)",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "ResourceOwnership",
+      "attributes": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "Unique identifier for the ownership record",
+          "required": true,
+          "unique": true
+        },
+        {
+          "name": "resourceType",
+          "type": "string",
+          "description": "Type of resource being owned",
+          "required": true
+        },
+        {
+          "name": "resourceId",
+          "type": "string",
+          "description": "ID of the resource being owned",
+          "required": true
+        },
+        {
+          "name": "ownerId",
+          "type": "string",
+          "description": "ID of the owner (user or group)",
+          "required": true
+        },
+        {
+          "name": "ownerType",
+          "type": "string",
+          "description": "Type of owner (user or group)",
+          "required": true
+        },
+        {
+          "name": "createdAt",
+          "type": "string",
+          "description": "Timestamp when the ownership was created",
+          "required": true
+        },
+        {
+          "name": "updatedAt",
+          "type": "string",
+          "description": "Timestamp when the ownership was last updated",
+          "required": true
+        }
+      ],
+      "relationships": [
+        {
+          "name": "user",
+          "type": "many-to-one",
+          "target": "User"
+        }
+      ]
+    },
+    {
+      "name": "AuthorizationLog",
+      "attributes": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "Unique identifier for the authorization log entry",
+          "required": true,
+          "unique": true
+        },
+        {
+          "name": "userId",
+          "type": "string",
+          "description": "ID of the user associated with the log entry",
+          "required": true
+        },
+        {
+          "name": "action",
+          "type": "string",
+          "description": "Action that was attempted",
+          "required": true
+        },
+        {
+          "name": "resource",
+          "type": "string",
+          "description": "Resource that was accessed",
+          "required": true
+        },
+        {
+          "name": "resourceId",
+          "type": "string",
+          "description": "ID of the resource that was accessed",
+          "required": false
+        },
+        {
+          "name": "timestamp",
+          "type": "string",
+          "description": "Timestamp when the action occurred",
+          "required": true
+        },
+        {
+          "name": "allowed",
+          "type": "boolean",
+          "description": "Whether the action was allowed",
+          "required": true
+        },
+        {
+          "name": "reason",
+          "type": "string",
+          "description": "Reason for allowing or denying the action",
+          "required": false
+        }
+      ],
+      "relationships": [
+        {
+          "name": "user",
+          "type": "many-to-one",
+          "target": "User"
+        }
+      ]
+    }
+  ]
+}

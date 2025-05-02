@@ -1,0 +1,24 @@
+{
+  "name": "@specky/authentication-authorization",
+  "version": "0.1.0",
+  "description": "Manages user identity verification and access control within the Specky repository system, handling OAuth 2.0 integration, authentication tokens, and permission-based access to repository resources.",
+  "author": {
+    "name": "Specky Team",
+    "email": "team@specky.dev"
+  },
+  "license": "MIT",
+  "keywords": [
+    "authentication",
+    "authorization",
+    "oauth",
+    "jwt",
+    "tokens",
+    "roles",
+    "permissions",
+    "access control",
+    "security"
+  ],
+  "dependencies": {
+    "@specky/user-management": "^0.1.0"
+  }
+}
