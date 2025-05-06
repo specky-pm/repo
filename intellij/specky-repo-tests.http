@@ -1,0 +1,167 @@
+### Specky Repository API Tests
+# This file contains HTTP requests for testing the Specky Repository API
+# To run these tests:
+# 1. Make sure the Specky Repository application is running on http://localhost:8080
+# 2. Create a directory 'test-files' in the same directory as this file
+# 3. Create test ZIP files in the 'test-files' directory or update the file paths below
+# 4. Run the requests in sequence using the IntelliJ HTTP Client
+
+### 1. Upload a new component
+POST http://localhost:8080/api/components
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="name"
+
+@specky/test-component
+--WebAppBoundary
+Content-Disposition: form-data; name="version"
+
+1.0.0
+--WebAppBoundary
+Content-Disposition: form-data; name="description"
+
+Test component
+--WebAppBoundary
+Content-Disposition: form-data; name="packageFile"; filename="test-component.zip"
+Content-Type: application/octet-stream
+
+< ./component-storage.zip
+--WebAppBoundary--
+
+### 2. Get all components (empty repository)
+GET http://localhost:8080/api/components
+
+### 3. Download a specific component
+GET http://localhost:8080/api/components/download?name=@specky/test-component&version=1.0.0
+
+### 4. Upload multiple components for testing
+# Component 1
+POST http://localhost:8080/api/components
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="name"
+
+@specky/test-component1
+--WebAppBoundary
+Content-Disposition: form-data; name="version"
+
+1.0.0
+--WebAppBoundary
+Content-Disposition: form-data; name="description"
+
+Test component 1
+--WebAppBoundary
+Content-Disposition: form-data; name="packageFile"; filename="test-component1.zip"
+Content-Type: application/octet-stream
+
+< ./test-files/test-component1.zip
+--WebAppBoundary--
+
+### Component 2
+POST http://localhost:8080/api/components
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="name"
+
+@specky/test-component2
+--WebAppBoundary
+Content-Disposition: form-data; name="version"
+
+1.0.0
+--WebAppBoundary
+Content-Disposition: form-data; name="description"
+
+Test component 2
+--WebAppBoundary
+Content-Disposition: form-data; name="packageFile"; filename="test-component2.zip"
+Content-Type: application/octet-stream
+
+< ./test-files/test-component2.zip
+--WebAppBoundary--
+
+### 5. Get all components (with components)
+GET http://localhost:8080/api/components
+
+### 6. Upload multiple versions of a component
+# Version 1.0.0
+POST http://localhost:8080/api/components
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="name"
+
+@specky/versioned-component
+--WebAppBoundary
+Content-Disposition: form-data; name="version"
+
+1.0.0
+--WebAppBoundary
+Content-Disposition: form-data; name="description"
+
+Test component v1
+--WebAppBoundary
+Content-Disposition: form-data; name="packageFile"; filename="test-component-v1.zip"
+Content-Type: application/octet-stream
+
+< ./test-files/test-component-v1.zip
+--WebAppBoundary--
+
+### Version 1.1.0
+POST http://localhost:8080/api/components
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="name"
+
+@specky/versioned-component
+--WebAppBoundary
+Content-Disposition: form-data; name="version"
+
+1.1.0
+--WebAppBoundary
+Content-Disposition: form-data; name="description"
+
+Test component v2
+--WebAppBoundary
+Content-Disposition: form-data; name="packageFile"; filename="test-component-v2.zip"
+Content-Type: application/octet-stream
+
+< ./test-files/test-component-v2.zip
+--WebAppBoundary--
+
+### 7. Get all versions of a component
+GET http://localhost:8080/api/components/versions?name=@specky/versioned-component
+
+### 8. Get a non-existent component
+GET http://localhost:8080/api/components/download?name=@specky/non-existent&version=1.0.0
+
+### 9. Get versions of a non-existent component
+GET http://localhost:8080/api/components/versions?name=@specky/non-existent
+
+### 10. Upload a component with invalid version format
+POST http://localhost:8080/api/components
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="name"
+
+@specky/test-component
+--WebAppBoundary
+Content-Disposition: form-data; name="version"
+
+invalid-version
+--WebAppBoundary
+Content-Disposition: form-data; name="description"
+
+Test component with invalid version
+--WebAppBoundary
+Content-Disposition: form-data; name="packageFile"; filename="test-component.zip"
+Content-Type: application/octet-stream
+
+< ./test-files/test-component.zip
+--WebAppBoundary--
+
+###
