@@ -1,32 +1,34 @@
-Feature: Component Publishing
-  As a component developer
-  I want to publish my component to the Specky repository
-  So that others can discover and use it
+Feature: A user publishes a component
 
-  Rule: New components must have valid structure and metadata
+  Rule: The component package must be stored in the system
+
+    Example: System successfully stores a new component package
+      Given a user has a valid component package
+      When the user uploads the component package
+      Then the system should store the component package in the storage
+      And the system should confirm successful storage
+      And the component should be available for retrieval
+
+    Example: System fails to store an invalid component package
+      Given a user has an invalid component package
+      When the user uploads the component package
+      Then the system should reject the component package
+      And the system should report storage failure
+      And the component should not be available for retrieval
+
+
+  Rule: Component metadata should be stored in the system
 
     Example: User publishes a new component with valid structure
-      Given a user has created a component with valid structure
-      And the component has a valid spec.json file
+      Given a user has created a component with valid and spec.json file
       When the user uploads the component package
-      Then the system should validate the component structure
-      And the system should extract and validate the metadata
-      And the system should store the component package
-      And the system should index the component metadata for searching
-      And the system should associate the component with the publishing user
-      And subscribers should be notified about the new component
+      Then the metadata from the spec.json should be found in the system
 
-    Example: User attempts to publish a component with invalid structure
-      Given a user has created a component with invalid structure
-      When the user uploads the component package
-      Then the system should reject the upload
-      And the system should provide detailed validation errors
-      And the component should not be stored
+  Rule: an existing component will be overwritten given the same name and version
 
-    Example: User attempts to publish a component with a duplicate name
+    Example: User attempts to publish a component with a duplicate name and version
       Given a user has created a component with a valid structure
-      And a component with the same name already exists in the repository
-      And the version is not different from the existing component
+      And a component with the same name and version already exists in the repository
       When the user uploads the component package
-      Then the system should reject the upload
-      And the system should inform the user about the name conflict
+      Then the system should overwrite the existing component
+      And the metadata from the new spec.json should be found in the system

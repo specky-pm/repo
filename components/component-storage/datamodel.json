@@ -6,21 +6,20 @@
         {
           "name": "id",
           "type": "string",
-          "description": "Unique identifier for the component",
+          "description": "Unique identifier for the component e.g. '@specky/component-storage@1.2.3'",
           "required": true,
           "unique": true
         },
         {
           "name": "name",
           "type": "string",
-          "description": "Component name, unique within the registry",
-          "required": true,
-          "unique": true
+          "description": "Component name e.g. '@specky/component-storage'",
+          "required": true
         },
         {
           "name": "version",
           "type": "string",
-          "description": "Component version following semantic versioning",
+          "description": "Component version following semantic versioning e.g. '1.2.3'",
           "required": true,
           "validation": {
             "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?$"
@@ -33,35 +32,10 @@
           "required": true
         },
         {
-          "name": "ownerId",
-          "type": "string",
-          "description": "Reference to the user who owns the component",
-          "required": true
-        },
-        {
-          "name": "metadata",
-          "type": "object",
-          "description": "Full metadata from spec.json",
-          "required": true
-        },
-        {
           "name": "packageContent",
           "type": "binary",
           "description": "Component package content as compressed zip",
           "required": true
-        },
-        {
-          "name": "isDeprecated",
-          "type": "boolean",
-          "description": "Indicates if the component is deprecated",
-          "required": true,
-          "default": false
-        },
-        {
-          "name": "deprecationMessage",
-          "type": "string",
-          "description": "Message explaining why the component is deprecated",
-          "required": false
         },
         {
           "name": "publicationTimestamp",
@@ -74,89 +48,6 @@
           "type": "string",
           "description": "Date and time when the component was last updated",
           "required": true
-        }
-      ],
-      "relationships": [
-        {
-          "name": "versions",
-          "type": "one-to-many",
-          "target": "ComponentVersion"
-        },
-        {
-          "name": "owner",
-          "type": "many-to-one",
-          "target": "User"
-        }
-      ]
-    },
-    {
-      "name": "ComponentVersion",
-      "attributes": [
-        {
-          "name": "id",
-          "type": "string",
-          "description": "Unique identifier for the component version",
-          "required": true,
-          "unique": true
-        },
-        {
-          "name": "version",
-          "type": "string",
-          "description": "Version number following semantic versioning",
-          "required": true,
-          "validation": {
-            "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?$"
-          }
-        },
-        {
-          "name": "changeLog",
-          "type": "string",
-          "description": "Description of changes in this version",
-          "required": false
-        },
-        {
-          "name": "downloadCount",
-          "type": "number",
-          "description": "Number of times this version has been downloaded",
-          "required": true,
-          "default": 0
-        },
-        {
-          "name": "isDeprecated",
-          "type": "boolean",
-          "description": "Indicates if this version is deprecated",
-          "required": true,
-          "default": false
-        },
-        {
-          "name": "deprecationMessage",
-          "type": "string",
-          "description": "Message explaining why this version is deprecated",
-          "required": false
-        },
-        {
-          "name": "publicationTimestamp",
-          "type": "string",
-          "description": "Date and time when this version was published",
-          "required": true
-        },
-        {
-          "name": "packageContent",
-          "type": "binary",
-          "description": "Component package content for this specific version",
-          "required": true
-        }
-      ],
-      "relationships": [
-        {
-          "name": "component",
-          "type": "many-to-one",
-          "target": "Component"
-        },
-        {
-          "name": "dependencies",
-          "type": "many-to-many",
-          "target": "ComponentVersion"
         }
       ]
     }

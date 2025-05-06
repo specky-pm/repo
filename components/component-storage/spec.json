@@ -1,7 +1,7 @@
 {
   "name": "@specky/component-storage",
   "version": "0.1.0",
-  "description": "Responsible for managing the storage, versioning, and retrieval of Specky component specifications. Handles the entire lifecycle of component packages, from initial upload to download, including versioning according to semantic versioning principles.",
+  "description": "Responsible for managing the storage, versioning, and retrieval of Specky component specifications.",
   "author": {
     "name": "Specky Team",
     "email": "team@specky.dev"

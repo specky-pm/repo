@@ -1,40 +1,24 @@
-Feature: Component Retrieval
-  As a user
-  I want to download specific component versions
-  So that I can use them in my projects
+Feature: A user downloads a component
 
-  Rule: Users must have access to download components
+  Rule: The component package must be retrieved from storage
+    
+    Example: User downloads an existing component
+      Given a component "auth-service" with version "1.0.0" exists in storage
+      When the user requests to download component "auth-service" version "1.0.0"
+      Then the component package is retrieved from storage
+      And the component is prepared for download
 
-    Example: User downloads a specific component version
-      Given a user has access to a component
-      And the component has multiple versions available
-      When the user requests to download a specific version
-      Then the system should retrieve the component package from storage
-      And the system should track the download for statistics
-      And the system should serve the component as a zip file
-      And the download should complete successfully
+  Rule: The component must be served as a zip file
 
-    Example: User attempts to download a component without access
-      Given a user does not have access to a restricted component
-      When the user requests to download the component
-      Then the system should deny the download request
-      And the system should inform the user about the access restriction
+    Example: User downloads a component as zip file
+      Given a component "auth-service" with version "1.0.0" exists in storage
+      When the user requests to download component "auth-service" version "1.0.0"
+      Then the component package is prepared as a zip file
+      And the zip file is served to the user
 
-    Example: User downloads a deprecated component version
-      Given a user has access to a component
-      And a specific version of the component is deprecated
-      When the user requests to download the deprecated version
-      Then the system should retrieve the component package
-      And the system should provide a deprecation warning
-      And the system should suggest alternative components if available
-      And the download should complete with the warning
+  Rule: If the requested component doesn't exist and error should occur
 
-  Rule: Concurrent downloads must be handled efficiently
-
-    Example: Multiple users download the same component simultaneously
-      Given a popular component exists in the repository
-      And multiple users request to download it simultaneously
-      When the download requests are processed
-      Then the system should handle all requests efficiently
-      And all users should receive the complete component package
-      And download statistics should be accurately tracked for each download
+    Example: User attempts to download a non-existent component
+      Given no component "non-existent-service" exists in storage
+      When the user requests to download component "non-existent-service" version "1.0.0"
+      Then an error occurs indicating the component does not exist
