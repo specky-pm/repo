@@ -38,10 +38,10 @@ graph TD
 - [ ] Set up project structure (controllers, services, repositories, models, etc.)
 
 ### 2. Database Setup
-- [ ] Create database schema
-- [ ] Configure JPA entities
-- [ ] Set up database migration scripts (using Flyway or Liquibase)
-- [ ] Configure database to handle binary data efficiently
+- [x] Create database schema
+- [x] Configure JPA entities
+- [x] Set up database migration scripts (using Flyway or Liquibase)
+- [x] Configure database to handle binary data efficiently
 
 ### 3. Core Domain Model Implementation
 - [ ] Implement Component entity based on the data model
