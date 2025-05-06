@@ -19,9 +19,5 @@
     "deprecation"
   ],
   "dependencies": {
-    "@specky/user-management": "^0.1.0",
-    "@specky/dependency-management": "^0.1.0",
-    "@specky/search-discovery": "^0.1.0",
-    "@specky/validation-service": "^0.1.0"
   }
 }
