@@ -61,7 +61,8 @@ public class Component {
      * Stored as a BYTEA in the PostgreSQL database
      */
     @Lob
-    @Column(name = "package_content", nullable = false, columnDefinition = "BYTEA")
+    @Column(name = "package_content", nullable = false)
+    @org.hibernate.annotations.JdbcTypeCode(java.sql.Types.BINARY)
     private byte[] packageContent;
 
     /**
