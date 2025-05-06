@@ -36,6 +36,17 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	
+	// Cucumber dependencies for BDD testing
+	def cucumberVersion = '7.0.0'
+	testImplementation "io.cucumber:cucumber-java:${cucumberVersion}"
+	testImplementation "io.cucumber:cucumber-junit:${cucumberVersion}"
+	testImplementation "io.cucumber:cucumber-spring:${cucumberVersion}"
+	testImplementation "io.cucumber:cucumber-core:${cucumberVersion}"
+	
+	testImplementation 'org.junit.vintage:junit-vintage-engine:5.10.2'
+	testImplementation 'org.junit.platform:junit-platform-suite-api:1.10.2'
+	testImplementation 'org.junit.platform:junit-platform-suite-engine:1.10.2'
 }
 
 tasks.named('test') {
