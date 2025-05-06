@@ -20,7 +20,7 @@ The system should be small and simple. It will be thrown away in the future.
 ## Solution Strategy
 
 To keep the repository small and simple, the following design decisions have been made:
-- Programming Language: Java 17
+- Programming Language: Java 21
 - Frameworks: Spring Boot with WebMVC and DataJPA
 - Database: Postgres17
 - Packaging: Docker

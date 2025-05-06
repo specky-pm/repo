@@ -13,7 +13,7 @@ graph TD
 ```
 
 ### Technology Stack
-- **Programming Language**: Java 17
+- **Programming Language**: Java 21
 - **Framework**: Spring Boot 3.x with WebMVC and DataJPA
 - **Database**: PostgreSQL 17
 - **Build Tool**: Maven or Gradle
