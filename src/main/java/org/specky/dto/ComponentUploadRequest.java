@@ -21,7 +21,7 @@ public class ComponentUploadRequest {
     
     /**
      * Component name, typically in the format @organization/name
-     * Example: @specky/component-storage
+     * Example: @specky-pm/component-storage
      */
     @NotBlank(message = "Component name is required")
     private String name;

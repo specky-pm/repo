@@ -28,7 +28,7 @@ public class Component {
 
     /**
      * Unique identifier for the component, following the format @name@version
-     * Example: @specky/component-storage@1.2.3
+     * Example: @specky-pm/component-storage@1.2.3
      */
     @Id
     @Column(name = "id", nullable = false)
@@ -36,7 +36,7 @@ public class Component {
 
     /**
      * Component name, typically in the format @organization/name
-     * Example: @specky/component-storage
+     * Example: @specky-pm/component-storage
      */
     @NotBlank
     @Column(name = "name", nullable = false)

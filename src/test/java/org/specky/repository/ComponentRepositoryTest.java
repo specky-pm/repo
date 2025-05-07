@@ -23,8 +23,8 @@ class ComponentRepositoryTest {
     void testSaveAndRetrieveComponent() {
         // Create a test component
         Component component = new Component();
-        component.setId("@specky/test-component@1.0.0");
-        component.setName("@specky/test-component");
+        component.setId("@specky-pm/test-component@1.0.0");
+        component.setName("@specky-pm/test-component");
         component.setVersion("1.0.0");
         component.setDescription("Test component for repository testing");
         component.setPackageContent(new byte[]{1, 2, 3, 4, 5}); // Sample binary content
@@ -37,14 +37,14 @@ class ComponentRepositoryTest {
 
         // Verify the component was saved
         assertNotNull(savedComponent);
-        assertEquals("@specky/test-component@1.0.0", savedComponent.getId());
+        assertEquals("@specky-pm/test-component@1.0.0", savedComponent.getId());
 
         // Retrieve the component by ID
-        Optional<Component> retrievedComponentOpt = componentRepository.findById("@specky/test-component@1.0.0");
+        Optional<Component> retrievedComponentOpt = componentRepository.findById("@specky-pm/test-component@1.0.0");
         assertTrue(retrievedComponentOpt.isPresent());
         
         Component retrievedComponent = retrievedComponentOpt.get();
-        assertEquals("@specky/test-component", retrievedComponent.getName());
+        assertEquals("@specky-pm/test-component", retrievedComponent.getName());
         assertEquals("1.0.0", retrievedComponent.getVersion());
         assertEquals("Test component for repository testing", retrievedComponent.getDescription());
         assertArrayEquals(new byte[]{1, 2, 3, 4, 5}, retrievedComponent.getPackageContent());
@@ -54,8 +54,8 @@ class ComponentRepositoryTest {
     void testFindByNameAndVersion() {
         // Create a test component
         Component component = new Component();
-        component.setId("@specky/test-component@1.0.0");
-        component.setName("@specky/test-component");
+        component.setId("@specky-pm/test-component@1.0.0");
+        component.setName("@specky-pm/test-component");
         component.setVersion("1.0.0");
         component.setDescription("Test component for repository testing");
         component.setPackageContent(new byte[]{1, 2, 3, 4, 5}); // Sample binary content
@@ -67,9 +67,9 @@ class ComponentRepositoryTest {
         componentRepository.save(component);
 
         // Find by name and version
-        Optional<Component> foundComponent = componentRepository.findByNameAndVersion("@specky/test-component", "1.0.0");
+        Optional<Component> foundComponent = componentRepository.findByNameAndVersion("@specky-pm/test-component", "1.0.0");
         assertTrue(foundComponent.isPresent());
-        assertEquals("@specky/test-component@1.0.0", foundComponent.get().getId());
+        assertEquals("@specky-pm/test-component@1.0.0", foundComponent.get().getId());
     }
 
     @Test
@@ -79,8 +79,8 @@ class ComponentRepositoryTest {
         byte[] sampleContent = new byte[]{1, 2, 3, 4, 5};
         
         Component component1 = new Component();
-        component1.setId("@specky/test-component@1.0.0");
-        component1.setName("@specky/test-component");
+        component1.setId("@specky-pm/test-component@1.0.0");
+        component1.setName("@specky-pm/test-component");
         component1.setVersion("1.0.0");
         component1.setDescription("Version 1.0.0");
         component1.setPackageContent(sampleContent);
@@ -88,8 +88,8 @@ class ComponentRepositoryTest {
         component1.setUpdateTimestamp(now.minusDays(2));
         
         Component component2 = new Component();
-        component2.setId("@specky/test-component@1.1.0");
-        component2.setName("@specky/test-component");
+        component2.setId("@specky-pm/test-component@1.1.0");
+        component2.setName("@specky-pm/test-component");
         component2.setVersion("1.1.0");
         component2.setDescription("Version 1.1.0");
         component2.setPackageContent(sampleContent);
@@ -97,8 +97,8 @@ class ComponentRepositoryTest {
         component2.setUpdateTimestamp(now.minusDays(1));
         
         Component component3 = new Component();
-        component3.setId("@specky/test-component@2.0.0");
-        component3.setName("@specky/test-component");
+        component3.setId("@specky-pm/test-component@2.0.0");
+        component3.setName("@specky-pm/test-component");
         component3.setVersion("2.0.0");
         component3.setDescription("Version 2.0.0");
         component3.setPackageContent(sampleContent);
@@ -111,7 +111,7 @@ class ComponentRepositoryTest {
         componentRepository.save(component3);
         
         // Find all versions ordered by version descending
-        List<Component> components = componentRepository.findByNameOrderByVersionDesc("@specky/test-component");
+        List<Component> components = componentRepository.findByNameOrderByVersionDesc("@specky-pm/test-component");
         
         // Verify results
         assertEquals(3, components.size());
@@ -124,8 +124,8 @@ class ComponentRepositoryTest {
     void testExistsForExistingComponent() {
         // Create a test component
         Component component = new Component();
-        component.setId("@specky/test-component@1.0.0");
-        component.setName("@specky/test-component");
+        component.setId("@specky-pm/test-component@1.0.0");
+        component.setName("@specky-pm/test-component");
         component.setVersion("1.0.0");
         component.setDescription("Test component for repository testing");
         component.setPackageContent(new byte[]{1, 2, 3, 4, 5}); // Sample binary content
@@ -137,15 +137,15 @@ class ComponentRepositoryTest {
         componentRepository.save(component);
         
         // Check if component exists
-        assertTrue(componentRepository.existsByNameAndVersion("@specky/test-component", "1.0.0"));
+        assertTrue(componentRepository.existsByNameAndVersion("@specky-pm/test-component", "1.0.0"));
     }
     
     @Test
     void testNotExistsForDifferentVersion() {
         // Create a test component
         Component component = new Component();
-        component.setId("@specky/test-component@1.0.0");
-        component.setName("@specky/test-component");
+        component.setId("@specky-pm/test-component@1.0.0");
+        component.setName("@specky-pm/test-component");
         component.setVersion("1.0.0");
         component.setDescription("Test component for repository testing");
         component.setPackageContent(new byte[]{1, 2, 3, 4, 5}); // Sample binary content
@@ -157,15 +157,15 @@ class ComponentRepositoryTest {
         componentRepository.save(component);
         
         // Check if component with different version exists
-        assertFalse(componentRepository.existsByNameAndVersion("@specky/test-component", "2.0.0"));
+        assertFalse(componentRepository.existsByNameAndVersion("@specky-pm/test-component", "2.0.0"));
     }
     
     @Test
     void testNotExistsForDifferentName() {
         // Create a test component
         Component component = new Component();
-        component.setId("@specky/test-component@1.0.0");
-        component.setName("@specky/test-component");
+        component.setId("@specky-pm/test-component@1.0.0");
+        component.setName("@specky-pm/test-component");
         component.setVersion("1.0.0");
         component.setDescription("Test component for repository testing");
         component.setPackageContent(new byte[]{1, 2, 3, 4, 5}); // Sample binary content
@@ -177,6 +177,6 @@ class ComponentRepositoryTest {
         componentRepository.save(component);
         
         // Check if component with different name exists
-        assertFalse(componentRepository.existsByNameAndVersion("@specky/non-existent", "1.0.0"));
+        assertFalse(componentRepository.existsByNameAndVersion("@specky-pm/non-existent", "1.0.0"));
     }
 }

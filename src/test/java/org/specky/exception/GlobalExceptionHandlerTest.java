@@ -33,12 +33,12 @@ public class GlobalExceptionHandlerTest {
     public void testComponentNotFoundException() throws Exception {
         // Test getting a component that doesn't exist
         mockMvc.perform(get("/api/components/download")
-                .param("name", "@specky/non-existent")
+                .param("name", "@specky-pm/non-existent")
                 .param("version", "1.0.0"))
                 .andExpect(status().isNotFound())
                 .andExpect(jsonPath("$.status", is(404)))
                 .andExpect(jsonPath("$.message", is("Component not found")))
-                .andExpect(jsonPath("$.details", is("Component @specky/non-existent with version 1.0.0 not found")))
+                .andExpect(jsonPath("$.details", is("Component @specky-pm/non-existent with version 1.0.0 not found")))
                 .andExpect(jsonPath("$.timestamp", notNullValue()))
                 .andExpect(jsonPath("$.path", is("/api/components/download")));
     }
@@ -56,7 +56,7 @@ public class GlobalExceptionHandlerTest {
         // Upload with invalid version format
         mockMvc.perform(multipart("/api/components")
                 .file(packageFile)
-                .param("name", "@specky/test-component")
+                .param("name", "@specky-pm/test-component")
                 .param("version", "invalid-version")
                 .param("description", "Test component"))
                 .andExpect(status().isBadRequest())

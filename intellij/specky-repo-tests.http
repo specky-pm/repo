@@ -13,7 +13,7 @@ Content-Type: multipart/form-data; boundary=WebAppBoundary
 --WebAppBoundary
 Content-Disposition: form-data; name="name"
 
-@specky/test-component
+@specky-pm/test-component
 --WebAppBoundary
 Content-Disposition: form-data; name="version"
 
@@ -33,7 +33,7 @@ Content-Type: application/octet-stream
 GET http://localhost:8080/api/components
 
 ### 3. Download a specific component
-GET http://localhost:8080/api/components/download?name=@specky/test-component&version=1.0.0
+GET http://localhost:8080/api/components/download?name=@specky-pm/test-component&version=1.0.0
 
 ### 4. Upload multiple components for testing
 # Component 1
@@ -43,7 +43,7 @@ Content-Type: multipart/form-data; boundary=WebAppBoundary
 --WebAppBoundary
 Content-Disposition: form-data; name="name"
 
-@specky/test-component1
+@specky-pm/test-component1
 --WebAppBoundary
 Content-Disposition: form-data; name="version"
 
@@ -66,7 +66,7 @@ Content-Type: multipart/form-data; boundary=WebAppBoundary
 --WebAppBoundary
 Content-Disposition: form-data; name="name"
 
-@specky/test-component2
+@specky-pm/test-component2
 --WebAppBoundary
 Content-Disposition: form-data; name="version"
 
@@ -93,7 +93,7 @@ Content-Type: multipart/form-data; boundary=WebAppBoundary
 --WebAppBoundary
 Content-Disposition: form-data; name="name"
 
-@specky/versioned-component
+@specky-pm/versioned-component
 --WebAppBoundary
 Content-Disposition: form-data; name="version"
 
@@ -116,7 +116,7 @@ Content-Type: multipart/form-data; boundary=WebAppBoundary
 --WebAppBoundary
 Content-Disposition: form-data; name="name"
 
-@specky/versioned-component
+@specky-pm/versioned-component
 --WebAppBoundary
 Content-Disposition: form-data; name="version"
 
@@ -133,13 +133,13 @@ Content-Type: application/octet-stream
 --WebAppBoundary--
 
 ### 7. Get all versions of a component
-GET http://localhost:8080/api/components/versions?name=@specky/versioned-component
+GET http://localhost:8080/api/components/versions?name=@specky-pm/versioned-component
 
 ### 8. Get a non-existent component
-GET http://localhost:8080/api/components/download?name=@specky/non-existent&version=1.0.0
+GET http://localhost:8080/api/components/download?name=@specky-pm/non-existent&version=1.0.0
 
 ### 9. Get versions of a non-existent component
-GET http://localhost:8080/api/components/versions?name=@specky/non-existent
+GET http://localhost:8080/api/components/versions?name=@specky-pm/non-existent
 
 ### 10. Upload a component with invalid version format
 POST http://localhost:8080/api/components
@@ -148,7 +148,7 @@ Content-Type: multipart/form-data; boundary=WebAppBoundary
 --WebAppBoundary
 Content-Disposition: form-data; name="name"
 
-@specky/test-component
+@specky-pm/test-component
 --WebAppBoundary
 Content-Disposition: form-data; name="version"
 

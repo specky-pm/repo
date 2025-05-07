@@ -6,14 +6,14 @@
         {
           "name": "id",
           "type": "string",
-          "description": "Unique identifier for the component e.g. '@specky/component-storage@1.2.3'",
+          "description": "Unique identifier for the component e.g. '@specky-pm/component-storage@1.2.3'",
           "required": true,
           "unique": true
         },
         {
           "name": "name",
           "type": "string",
-          "description": "Component name e.g. '@specky/component-storage'",
+          "description": "Component name e.g. '@specky-pm/component-storage'",
           "required": true
         },
         {

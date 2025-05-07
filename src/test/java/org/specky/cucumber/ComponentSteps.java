@@ -48,7 +48,7 @@ public class ComponentSteps {
 
     @Given("a user has a valid component package")
     public void userHasValidComponentPackage() throws IOException {
-        componentName = "@specky/test-component";
+        componentName = "@specky-pm/test-component";
         componentVersion = "1.0.0";
         componentDescription = "Test component for BDD testing";
         packageContent = createValidComponentPackage();
@@ -56,7 +56,7 @@ public class ComponentSteps {
 
     @Given("a user has an invalid component package")
     public void userHasInvalidComponentPackage() {
-        componentName = "@specky/test-component";
+        componentName = "@specky-pm/test-component";
         componentVersion = "invalid-version"; // Invalid semantic version
         componentDescription = "Test component with invalid version";
         packageContent = new byte[]{1, 2, 3, 4, 5}; // Simple byte array
@@ -65,7 +65,7 @@ public class ComponentSteps {
 
     @Given("a user has created a component with valid and spec.json file")
     public void userHasComponentWithValidSpecJson() throws IOException {
-        componentName = "@specky/test-component";
+        componentName = "@specky-pm/test-component";
         componentVersion = "1.0.0";
         componentDescription = "Test component with spec.json";
         packageContent = createComponentPackageWithSpecJson();
@@ -73,7 +73,7 @@ public class ComponentSteps {
 
     @Given("a user has created a component with a valid structure")
     public void userHasComponentWithValidStructure() throws IOException {
-        componentName = "@specky/test-component";
+        componentName = "@specky-pm/test-component";
         componentVersion = "1.0.0";
         componentDescription = "Test component with valid structure";
         packageContent = createValidComponentPackage();

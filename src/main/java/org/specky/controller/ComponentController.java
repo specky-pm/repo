@@ -98,7 +98,7 @@ public class ComponentController {
     })
     @GetMapping("/download")
     public ResponseEntity<byte[]> downloadComponent(
-            @Parameter(description = "Component name, e.g. @specky/component-storage") @RequestParam String name,
+            @Parameter(description = "Component name, e.g. @specky-pm/component-storage") @RequestParam String name,
             @Parameter(description = "Component version, e.g. 1.0.0") @RequestParam String version) {
         
         logger.info("Received request to download component: {} version {}", name, version);
@@ -158,7 +158,7 @@ public class ComponentController {
     })
     @GetMapping("/versions")
     public ResponseEntity<ComponentListResponse> listComponentVersions(
-            @Parameter(description = "Component name, e.g. @specky/component-storage") @RequestParam String name) {
+            @Parameter(description = "Component name, e.g. @specky-pm/component-storage") @RequestParam String name) {
         logger.info("Received request to list versions for component: {}", name);
         
         List<Component> components = componentService.getComponentVersions(name);

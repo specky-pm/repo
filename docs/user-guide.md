@@ -50,7 +50,7 @@ Before publishing, ensure your component package:
 
 Component names typically follow the format `@organization/component-name`, for example:
 ```
-@specky/component-storage
+@specky-pm/component-storage
 ```
 
 Versions must follow semantic versioning (major.minor.patch), for example:
@@ -68,7 +68,7 @@ You can publish a component using the following methods:
 curl -X POST \
   http://localhost:8080/api/components \
   -H "Content-Type: multipart/form-data" \
-  -F "name=@specky/component-storage" \
+  -F "name=@specky-pm/component-storage" \
   -F "version=1.0.0" \
   -F "description=A storage component for Specky" \
   -F "packageFile=@/path/to/your/component.zip"
@@ -80,7 +80,7 @@ curl -X POST \
 2. Set the URL to `http://localhost:8080/api/components`
 3. Set the content type to `multipart/form-data`
 4. Add the following form fields:
-   - `name`: The component name (e.g., `@specky/component-storage`)
+   - `name`: The component name (e.g., `@specky-pm/component-storage`)
    - `version`: The component version (e.g., `1.0.0`)
    - `description`: A description of the component (optional)
    - `packageFile`: The component package file (ZIP)
@@ -92,7 +92,7 @@ After publishing, you should receive a response with status code `201 Created` a
 
 ```json
 {
-  "name": "@specky/component-storage",
+  "name": "@specky-pm/component-storage",
   "version": "1.0.0",
   "description": "A storage component for Specky",
   "publicationTimestamp": "2025-06-05T13:45:30",
@@ -114,7 +114,7 @@ You can download a component using the following methods:
 
 ```bash
 curl -X GET \
-  "http://localhost:8080/api/components/download?name=@specky/component-storage&version=1.0.0" \
+  "http://localhost:8080/api/components/download?name=@specky-pm/component-storage&version=1.0.0" \
   -o component.zip
 ```
 
@@ -122,7 +122,7 @@ curl -X GET \
 
 1. Navigate to the following URL:
    ```
-   http://localhost:8080/api/components/download?name=@specky/component-storage&version=1.0.0
+   http://localhost:8080/api/components/download?name=@specky-pm/component-storage&version=1.0.0
    ```
 2. The browser should automatically download the component package as a ZIP file
 
@@ -131,7 +131,7 @@ curl -X GET \
 1. Set the request method to `GET`
 2. Set the URL to `http://localhost:8080/api/components/download`
 3. Add the following query parameters:
-   - `name`: The component name (e.g., `@specky/component-storage`)
+   - `name`: The component name (e.g., `@specky-pm/component-storage`)
    - `version`: The component version (e.g., `1.0.0`)
 4. Send the request
 5. Save the response body as a ZIP file
@@ -157,14 +157,14 @@ This will return a JSON response with all components:
   "count": 2,
   "components": [
     {
-      "name": "@specky/component-storage",
+      "name": "@specky-pm/component-storage",
       "version": "1.0.0",
       "description": "A storage component for Specky",
       "publicationTimestamp": "2025-06-05T13:45:30",
       "updateTimestamp": "2025-06-05T13:45:30"
     },
     {
-      "name": "@specky/component-ui",
+      "name": "@specky-pm/component-ui",
       "version": "2.1.0",
       "description": "A UI component for Specky",
       "publicationTimestamp": "2025-06-04T10:15:20",
@@ -179,7 +179,7 @@ This will return a JSON response with all components:
 To list all versions of a specific component:
 
 ```bash
-curl -X GET "http://localhost:8080/api/components/versions?name=@specky/component-storage"
+curl -X GET "http://localhost:8080/api/components/versions?name=@specky-pm/component-storage"
 ```
 
 This will return a JSON response with all versions of the specified component:
@@ -189,21 +189,21 @@ This will return a JSON response with all versions of the specified component:
   "count": 3,
   "components": [
     {
-      "name": "@specky/component-storage",
+      "name": "@specky-pm/component-storage",
       "version": "1.0.0",
       "description": "A storage component for Specky",
       "publicationTimestamp": "2025-06-05T13:45:30",
       "updateTimestamp": "2025-06-05T13:45:30"
     },
     {
-      "name": "@specky/component-storage",
+      "name": "@specky-pm/component-storage",
       "version": "0.9.0",
       "description": "A storage component for Specky (beta)",
       "publicationTimestamp": "2025-06-01T09:30:15",
       "updateTimestamp": "2025-06-01T09:30:15"
     },
     {
-      "name": "@specky/component-storage",
+      "name": "@specky-pm/component-storage",
       "version": "0.8.0",
       "description": "A storage component for Specky (alpha)",
       "publicationTimestamp": "2025-05-15T14:20:10",

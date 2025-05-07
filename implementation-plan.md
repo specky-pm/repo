@@ -49,7 +49,7 @@ graph TD
   @Entity
   public class Component {
       @Id
-      private String id; // Format: @specky/component-storage@1.2.3
+      private String id; // Format: @specky-pm/component-storage@1.2.3
       private String name;
       private String version;
       private String description;
@@ -113,8 +113,8 @@ graph TD
 
 ### Component Entity Structure
 Based on the provided data model, the Component entity will have the following structure:
-- id: Unique identifier (e.g., '@specky/component-storage@1.2.3')
-- name: Component name (e.g., '@specky/component-storage')
+- id: Unique identifier (e.g., '@specky-pm/component-storage@1.2.3')
+- name: Component name (e.g., '@specky-pm/component-storage')
 - version: Component version following semantic versioning
 - description: Component description
 - packageContent: Binary data of the component package (ZIP file)
